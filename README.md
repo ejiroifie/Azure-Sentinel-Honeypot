@@ -47,7 +47,6 @@ I provisioned a Windows Virtual Machine in Azure and intentionally "opened" the 
 
 **Evidence:**
 ![RG](phase1-new-resource-group-created.png)
-![VNet](phase1-hub-vnet-overview.png)
 ![VM](phase1-honeypot-vm-overview-public-ip.png)
 ![NSG](phase1-nsg-inbound-rule-allow-all-for-honeypot.png)
 
@@ -62,12 +61,11 @@ Standard logs only show an IP address. I used a **PowerShell script** that monit
 * **The Result:** I successfully generated an enriched log file (`failed_rdp_geo.log`) that revealed attacks originating from countries such as **Peru, Chile, and France**.
 
 **Evidence:**
-* `phase2-geolocation-api-setup.png`
-* `phase2-rdp-successful-vm-desktop.png`
-* `phase2-powershell-ise-opened-as-admin.png`
-* `phase2-powershell-ise-script-loaded-enrich_failed_logons.png`
-* `phase2-enrichment-script-running-in-powershell.png`
-* `phase2-failed_rdp_geo_log-with-enriched-entries.png`
+![RDP](phase2-rdp-successful-vm-desktop.png)
+![PS1](phase2-powershell-ise-opened-as-admin.png)
+![PS2](phase2-powershell-ise-script-loaded-enrich_failed_logons.png)
+![PS3](phase2-enrichment-script-running-in-powershell.png)
+![Logs](phase2-failed_rdp_geo_log-with-enriched-entries.png)
 
 ---
 
@@ -80,13 +78,12 @@ I connected the VM to **Microsoft Sentinel**. Since my geolocation data was in a
 * **The Result:** The enriched data was successfully ingested into Sentinel, allowing for advanced querying and correlation using **KQL**.
 
 **Evidence:**
-* `phase3-log-analytics-workspace-created.png`
-* `phase3-defender-for-cloud-servers-plan-enabled.png`
-* `phase3-sentinel-workspace-active-overview.png`
-* `phase3-data-connectors-enabled-list.png`
-* `phase3-dcr-wizard-resources-tab-vm-selected.png`
-* `phase3-custom-log-table-failed_rdp_geo_cl-created.png`
-
+![LAW](phase3-log-analytics-workspace-created.png)
+![Defender](phase3-defender-for-cloud-servers-plan-enabled.png)
+![Sentinel](phase3-sentinel-workspace-active-overview.png)
+![Connectors](phase3-data-connectors-enabled-list.png)
+![DCR](phase3-dcr-wizard-resources-tab-vm-selected.png)
+![Table](phase3-custom-log-table-failed_rdp_geo_cl-created.png)
 ---
 
 ## Phase 4: Detecting the Threat (Analytics)
@@ -98,8 +95,8 @@ I developed a scheduled **Analytics Rule** using **KQL (Kusto Query Language)**.
 * **The Result:** The system accurately distinguished between random noise and coordinated brute-force attacks, providing clear visibility into the most persistent threat actors.
 
 **Evidence:**
-* `phase4-analytics-rule-failed-rdp-brute-force.png`
-* `phase4-hunting-query-global-attack-origins.png`
+![Rule](phase4-analytics-rule-failed-rdp-brute-force.png)
+![KQL](phase4-hunting-query-global-attack-origins.png)
 
 ---
 
@@ -112,9 +109,9 @@ I engineered an **Automation Playbook** using Azure Logic Apps. Whenever a brute
 * **The Result:** I validated the system by triggering a real-world incident (**Incident ID 1**). The automation executed perfectly, demonstrating a functional, closed-loop response system.
 
 **Evidence:**
-* `phase5-geo-map-workbook-attack-origins.png`
-* `phase5-incident-test-brute-force.png`
-* `phase5-soar-playbook-brute-force-email.png`
+![Map](phase5-geo-map-workbook-attack-origins.png)
+![Incident](phase5-incident-test-brute-force.png)
+![SOAR](phase5-soar-playbook-brute-force-email.png)
 
 ---
 
