@@ -116,6 +116,7 @@ I engineered an **Automation Playbook** using Azure Logic Apps. Whenever a brute
 ---
 
 ## Challenges & Lessons Learned
+* **SOAR Notification Latency: Encountered an issue where the Logic App playbook triggered but did not successfully deliver the notification email. I investigated this as a potential tenant-level restriction or a permissions gap within the Logic App's API connection.
 * **RBAC and Permissions:** Resolved initial automation failures by correctly scoping the **Sentinel Responder** role for the Logic App's managed identity.
 * **Data Ingestion Latency:** Observed that visual workbooks may lag behind actual log data. I learned to rely on raw **KQL queries** for real-time verification.
 * **Cloud Resource Management:** Managed high-volume attack traffic to prevent Azure trial suspension, providing a practical lesson in monitoring ingestion costs.
@@ -123,4 +124,4 @@ I engineered an **Automation Playbook** using Azure Logic Apps. Whenever a brute
 ---
 
 ### Summary
-This project solidified my proficiency in the full **Incident Lifecycle**: from infrastructure deployment and data enrichment to detection and automated remediation. It represents a significant step in my transition into professional Security Operations.
+This project provided hands-on experience in building a functional security pipeline, from initial logging and data enrichment to detection and automated response. It allowed me to apply theoretical security concepts to a live environment and solve the practical technical challenges that arise when managing a SIEM in the cloud.
