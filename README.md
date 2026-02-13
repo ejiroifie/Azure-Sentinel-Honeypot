@@ -46,10 +46,10 @@ I provisioned a Windows Virtual Machine in Azure and intentionally "opened" the 
 * **The Result:** Within minutes of going live, the VM began receiving connection attempts from various automated scanners across the internet.
 
 **Evidence:**
-* `phase1-new-resource-group-created.png`
-* `phase1-hub-vnet-overview.png`
-* `phase1-honeypot-vm-overview-public-ip.png`
-* `phase1-nsg-inbound-rule-allow-all-for-honeypot.png`
+![RG](phase1-new-resource-group-created.png)
+![VNet](phase1-hub-vnet-overview.png)
+![VM](phase1-honeypot-vm-overview-public-ip.png)
+![NSG](phase1-nsg-inbound-rule-allow-all-for-honeypot.png)
 
 ---
 
