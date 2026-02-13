@@ -35,6 +35,38 @@ The project follows a logical flow of data from the initial point of attack to t
 
 ---
 
+
+graph TD
+    subgraph "Public Internet"
+        A[Botnets / Attacker IPs]
+    end
+
+    subgraph "Azure Virtual Machine (Honeypot)"
+        B[Windows Security Log<br/>Event ID: 4625] --> C{PowerShell Script}
+        C --> D[IPGeolocation API]
+        D --> E[Custom Log File<br/>failed_rdp_geo.log]
+    end
+
+    subgraph "Azure Monitoring & SIEM"
+        E --> F[Log Analytics Workspace]
+        F --> G[Microsoft Sentinel]
+        G --> H{KQL Analytics Rule}
+    end
+
+    subgraph "Response Automation (SOAR)"
+        H --> I[Logic App Playbook]
+        I --> J[Security Team Email Alert]
+    end
+
+    A -- "RDP Brute Force Port 3389" --> B
+
+
+
+
+
+
+
+
 ## Phase 1: Setting the Bait (VM Setup)
 **Objective:** To establish a controlled, isolated environment that mimics a vulnerable enterprise asset.
 
