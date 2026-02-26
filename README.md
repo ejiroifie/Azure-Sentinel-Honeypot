@@ -120,6 +120,8 @@ I engineered an **Automation Playbook** using Azure Logic Apps. Whenever a brute
 * **RBAC and Permissions:** Resolved initial automation failures by correctly scoping the **Sentinel Responder** role for the Logic App's managed identity.
 * **Data Ingestion Latency:** Observed that visual workbooks may lag behind actual log data. I learned to rely on raw **KQL queries** for real-time verification.
 * **Cloud Resource Management:** Managed high-volume attack traffic to prevent Azure trial suspension, providing a practical lesson in monitoring ingestion costs.
+* **Geospatial Visualization & Subscription Limits:** While the data was successfully enriched via API, the final world map visualization was interrupted when the high volume of traffic eventually led to an Azure account suspension. This taught me the critical importance of setting Budget Alerts and Cap Limits on Log Analytics ingestion to maintain service availability.
+* **KQL Data-Type Casting:** I discovered that Sentinel Workbooks require specific data-type casting (e.g., toreal()) for Latitude and Longitude to plot correctly. Troubleshooting this provided a deeper understanding of Schema Mapping and data normalization within a SIEM.
 
 ---
 
