@@ -119,6 +119,13 @@ I connected the VM to **Microsoft Sentinel**. Since my geolocation data was in a
 **What I did:**
 I developed a scheduled **Analytics Rule** using **KQL (Kusto Query Language)**. The system was programmed to trigger a high-severity incident if a single source IP exceeded a specific number of failed attempts within a defined window.
 
+#### KQL Detection & Parsing Query:
+```kusto
+FAILED_RDP_GEO_CL_CL
+| parse RawData with * "|" ip "|" country "|" latitude "|"
+| summarize Count = count() by country, ip
+| project country, ip, Count
+| order by Count desc
 * **The Result:** The system accurately distinguished between random noise and coordinated brute-force attacks, providing clear visibility into the most persistent threat actors.
 
 **Evidence:**
