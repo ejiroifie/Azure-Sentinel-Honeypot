@@ -128,6 +128,13 @@ I connected the VM to **Microsoft Sentinel**. Since my geolocation data was in a
 ![Table](phase3-custom-log-table-failed_rdp_geo_cl-created.png)
 ---
 
+![LAW](./phase3-log-analytics-workspace-created.png)
+![Defender](./phase3-defender-for-cloud-servers-plan-enabled.png)
+![Sentinel](./phase3-sentinel-workspace-active-overview.png)
+![Connectors](./phase3-data-connectors-enabled-list.png)
+![DCR](./phase3-dcr-wizard-resources-tab-vm-selected.png)
+![Table](./phase3-custom-log-table-failed_rdp_geo_cl-created.png)
+
 ## Phase 4: Detecting the Threat (Analytics)
 **Objective:** To identify brute-force patterns and group global attack origins.
 
