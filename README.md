@@ -109,7 +109,7 @@ while ($true) {
     }
 }
 
-
+---
 
 ## Phase 3: Connecting the SIEM (Data Ingestion)
 **Objective:** To transition data from a local text file to an enterprise SIEM for analysis.
@@ -140,7 +140,7 @@ I developed a scheduled **Analytics Rule** using **KQL (Kusto Query Language)**.
 ![Rule](phase4-analytics-rule-failed-rdp-brute-force.png)
 ![KQL](phase4-hunting-query-global-attack-origins.png)
 
-
+---
 
 ## Phase 5: Automated Response (SOAR)
 **Objective:** To minimize response time through automated security orchestration.
