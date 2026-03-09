@@ -72,8 +72,6 @@ Standard logs only show an IP address. I used a **PowerShell script** that monit
 #### Enriched Log PowerShell Script
 This script monitors the Windows Event Viewer for Failed Logons (Event ID 4625), extracts the source IP, and queries the IPGeolocation API to generate a custom log file for Sentinel.
 
-```markdown
-```powershell
 # API Key and Log File configuration
 $apiKey = "PLACEHOLDER_REDACTED_FOR_SECURITY"  # Get your own key at https://ipgeolocation.io
 $logFile = "C:\failed_rdp_geo.log"
