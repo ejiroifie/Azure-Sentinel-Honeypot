@@ -23,7 +23,7 @@ I initiated this lab to gain deep, hands-on exposure to **Detection Engineering 
 
 ## 🏗️ System Architecture
 
-Azure-Sentinel-Honeypot-SIEM-Architecture.png
+![Architecture Diagram](./Azure-Sentinel-Honeypot-SIEM-Architecture.png)
 
 The project follows a logical flow of data from the initial point of attack to the final automated response:
 
