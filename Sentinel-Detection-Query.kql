@@ -1,0 +1,7 @@
+// KQL Query to parse and summarize brute force attacks
+// Source: Custom logs enriched with IPGeolocation data
+FAILED_RDP_GEO_CL_CL
+| parse RawData with * "|" ip "|" country "|" latitude "|"
+| summarize Count = count() by country, ip
+| project country, ip, Count
+| order by Count desc
