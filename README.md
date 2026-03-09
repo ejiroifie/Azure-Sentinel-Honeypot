@@ -94,7 +94,13 @@ I connected the VM to **Microsoft Sentinel**. Since my geolocation data was in a
 
 **What I did:**
 I developed a scheduled **Analytics Rule** using **KQL (Kusto Query Language)**. The system was programmed to trigger a high-severity incident if a single source IP exceeded a specific number of failed attempts within a defined window.
+**Objective:** To identify brute-force patterns and group global attack origins.
 
+* **The Result:** The system accurately distinguished between random noise and coordinated brute-force attacks, providing clear visibility into the most persistent threat actors.
+
+**Evidence:**
+![Rule](phase4-analytics-rule-failed-rdp-brute-force.png)
+![KQL](phase4-hunting-query-global-attack-origins.png)
 ---
 
 ## Phase 5: Automated Response (SOAR)
