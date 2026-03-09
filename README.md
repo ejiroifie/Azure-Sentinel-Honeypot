@@ -109,7 +109,7 @@ while ($true) {
     }
 }
 
----
+
 ## Phase 3: Connecting the SIEM (Data Ingestion)
 **Objective:** To transition data from a local text file to an enterprise SIEM for analysis.
 
