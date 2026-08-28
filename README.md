@@ -36,6 +36,29 @@ The project follows a logical flow of data from the initial point of attack to t
 4.  **Data Ingestion:** The Azure Monitor Agent (AMA) sends the enriched logs to the Log Analytics Workspace.
 5.  **Detection & Response:** Microsoft Sentinel identifies brute-force patterns and triggers a Logic App for automated email alerts.
 
+[ Attacker / Internet ]
+       │ (RDP Port 3389)
+       ▼
+[ Azure Windows VM (Honeypot) ] ──► (Event 4625: Failed Logon)
+       │
+       ▼
+[ PowerShell Exporter Script ] ──► (Calls ipgeolocation.io API)
+       │
+       ▼
+[ Custom Log File (failed_rdp_geo.log) ]
+       │ (Azure Monitor Agent / DCR)
+       ▼
+[ Log Analytics Workspace ] ──► Custom Table: FAILED_RDP_GEO_CL_CL
+       │
+       ▼
+[ Microsoft Sentinel SIEM ]
+       ├── Analytics Rules (Brute Force Detection)
+       ├── Custom Workbooks (Geo-Map Visualization)
+       └── Logic Apps / SOAR (Automated Email Alerts)
+
+
+
+
 ---
 
 
