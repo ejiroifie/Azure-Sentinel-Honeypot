@@ -37,6 +37,53 @@ The project follows a logical flow of data from the initial point of attack to t
 5.  **Detection & Response:** Microsoft Sentinel identifies brute-force patterns and triggers a Logic App for automated email alerts.
 
 
+
+## Architecture Pipeline
+
+```text
++-----------------------+
+|  Attacker / Internet  |
++-----------------------+
+            |
+            | (RDP Port 3389)
+            v
++-----------------------+      +--------------------------+
+|  Azure Windows VM     | ---> | Event 4625: Failed Logon |
+|  (Honeypot)           |      +--------------------------+
++-----------------------+
+            |
+            v
++-----------------------+      +--------------------------+
+|  PowerShell Exporter  | ---> | Calls ipgeolocation.io   |
+|  Script               |      | API for Geolocation Data |
++-----------------------+      +--------------------------+
+            |
+            v
++-----------------------+
+|  Custom Log File      |
+|  (failed_rdp_geo.log) |
++-----------------------+
+            |
+            | (Azure Monitor Agent / DCR)
+            v
++-----------------------+      +--------------------------+
+|  Log Analytics        | ---> | Custom Log Table:        |
+|  Workspace            |      | FAILED_RDP_GEO_CL_CL     |
++-----------------------+      +--------------------------+
+            |
+            v
++---------------------------------------------------------+
+|                 Microsoft Sentinel SIEM                 |
++---------------------------------------------------------+
+       |                   |                   |
+       v                   v                   v
++--------------+    +--------------+    +-----------------+
+| Analytics    |    | Custom       |    | Logic Apps /    |
+| Rules (Brute |    | Workbooks    |    | SOAR (Automated |
+| Force)       |    | (Geo-Map)    |    | Email Alerts)   |
++--------------+    +--------------+    +-----------------+
+```
+
 ---
 
 
